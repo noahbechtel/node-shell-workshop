@@ -1,8 +1,14 @@
-module.exports = fs.readdir('./', 'utf8',(err,files)=>{
-    if(err){
-        throw err
+//module.exports = function() {};
+
+const fs = require('fs');
+
+module.exports = function() {
+  fs.readdir('./', 'utf8', (err, files) => {
+    if (err) {
+      throw err;
     } else {
-        ProcessingInstruction.stdout.write(files.joi('\n'));
-        ProcessingInstruction.stdout.write("promp > ");
+      process.stdout.write(files.join('\n'));
+      process.stdout.write('\npromp > ');
     }
-})
+  });
+};
